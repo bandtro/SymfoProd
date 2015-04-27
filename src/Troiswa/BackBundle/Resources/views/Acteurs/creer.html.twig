@@ -1,0 +1,91 @@
+
+{% extends "TroiswaBackBundle::layout.html.twig" %}
+
+{% block titre %}
+    Genres {{ parent() }}
+
+{% endblock %}
+
+
+{% block css_s %}
+    {{ parent() }}
+
+{% endblock %}
+
+
+
+{% block central %}
+
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <h1 class="page-header">
+                        Saisie de l'acteur
+                    </h1>
+
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-dashboard"></i>  <a href="{{ path('troiswa_back_index') }}">Retour à l'accueil</a>
+                        </li>
+
+                        <li class="active">
+                            <a href="{{ path("troiswa_back_acteurs") }}"><i class="fa fa-table"></i>  Acteurs /</a>
+                            <i class="fa fa-table"></i>  CreerActeur
+                        </li>
+
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+
+
+
+            {{ form_start(formGenre, {"attr":{"novalidate":"novalidate"}} ) }}
+
+            {{ form_errors(formGenre.prenom) }}
+            <h4>{{ form_label(formGenre.prenom, "Prenom: ", {"label_attr":{"class":"label label-primary"}}) }}</h4>
+            {{ form_widget(formGenre.prenom, {"attr":{"class":"form-control", "placeholder":"Prenom..."}}) }}
+
+            {{ form_errors(formGenre.nom) }}
+            <h4>{{ form_label(formGenre.nom, "Nom: ", {"label_attr":{"class":"label label-primary"}}) }}</h4>
+            {{ form_widget(formGenre.nom, {"attr":{"class":"form-control", "placeholder":"Nom..."}}) }}
+
+            {{ form_errors(formGenre.sexe) }}
+            <h4>{{ form_label(formGenre.sexe, "Sexe: ", {"label_attr":{"class":"label label-primary"}}) }}</h4>
+            {{ form_widget(formGenre.sexe, {"attr":{"class":"form-control"}}) }}
+
+            {{ form_errors(formGenre.biographie) }}
+            <h4>{{ form_label(formGenre.biographie, "Biographie: ", {"label_attr":{"class":"label label-primary"}}) }}</h4>
+            {{ form_widget(formGenre.biographie, {"attr":{"class":"form-control", "placeholder":"Biographie..."}}) }}
+
+            {{ form_errors(formGenre.dateNaissance) }}
+            <h4>{{ form_label(formGenre.dateNaissance, "Date de naissance: ", {"label_attr":{"class":"label label-primary"}}) }}</h4>
+            {{ form_widget(formGenre.dateNaissance, {"attr":{"class":"form-control"}}) }}
+
+            {{ form_errors(formGenre.ville) }}
+            <h4>{{ form_label(formGenre.ville, "Ville: ", {"label_attr":{"class":"label label-primary"}}) }}</h4>
+            {{ form_widget(formGenre.ville, {"attr":{"class":"form-control", "placeholder":"Ville..."}}) }}
+
+            {{ form_errors(formGenre.fichier) }}
+            <h4>{{ form_label(formGenre.fichier, "Image: ", {"label_attr":{"class":"label label-primary"}}) }}</h4>
+            {{ form_widget(formGenre.fichier, {"attr":{"class":"form-control", "placeholder":"Image..."}}) }}
+
+            {{ form_widget(formGenre.ajouter, {"attr":{"class":"btn btn-success"}}) }}
+
+            {{ form_end(formGenre) }}
+
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- /#page-wrapper -->
+
+{% endblock %}
+
+

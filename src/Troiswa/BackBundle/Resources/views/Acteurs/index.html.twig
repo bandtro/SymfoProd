@@ -1,0 +1,110 @@
+{% extends "TroiswaBackBundle::layout.html.twig" %}
+
+{% block siteTitle %}
+    Les Acteurs {{ parent() }}
+{% endblock %}
+
+{% block central %}
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <h1 class="page-header">
+                        Liste des acteurs <small>Il y a {{ acteurs.getTotalItemCount }} acteurs en base de données</small>
+                    </h1>
+
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-dashboard"></i>  <a href="{{ path('troiswa_back_index') }}">Retour à l'accueil</a>
+                        </li>
+
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Page Heading -->
+            <div class="row">
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+
+                <div class="panel-body">
+                    <a class="btn btn-primary" href="{{ path("troiswa_back_create_unacteur") }}">Créer un acteur</a>
+                    <div class="table-responsive">
+                        <div class="count">
+                        </div>
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>{{ knp_pagination_sortable(acteurs, 'ID', 'a.id') }}</th>
+                                <th>{{ knp_pagination_sortable(acteurs, 'Prenom', 'a.prenom') }}</th>
+                                <th>{{ knp_pagination_sortable(acteurs, 'Nom', 'a.nom') }}</th>
+                                <th>{{ knp_pagination_sortable(acteurs, 'Sexe', 'a.sexe') }}</th>
+                                <th>Biographie</th>
+                                <th>{{ knp_pagination_sortable(acteurs, 'DdN', 'a.dateNaissance') }}</th>
+                                <th>Ville</th>
+                                <th>Image</th>
+                                <th>Actions</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% if acteurs is empty %}
+
+                                <tr><td>{{ "Pas d'acteurs" }}</td></tr>
+
+                            {% else %}
+
+                            {% for acteur in acteurs %}
+
+                            <tr>
+                                <td>{{ acteur.id }}</td>
+                                <td>{{ acteur.prenom|capitalize }}</td>
+                                <td>{{ acteur.nom|capitalize }}</td>
+                                <td>
+                                   {% if acteur.sexe==1 %}
+                                       Homme
+                                   {% else %}
+                                       Femme
+                                   {% endif %}
+
+                                </td>
+                                <td>{{ acteur.biographie }}</td>
+                                <td>{{ acteur.dateNaissance|date("d/m/Y") }}</td>
+                                <td>{{ acteur.ville }}</td>
+                                <td><img style="width:auto; height:45px;" src="{{ asset( acteur.displayImage) }}"></td>
+                                <td>
+                                    <a class="btn btn-success" href="{{ path("troiswa_back_unacteur", {"id":acteur.id }) }}">Voir</a>
+                                    <a class="btn btn-primary" href="{{ path("troiswa_back_modifier_unacteur", {"id":acteur.id }) }}">Modifier</a>
+                                    <a class="btn btn-danger" href="{{ path("troiswa_back_supprimer_unacteur", {"id":acteur.id }) }}">Supprimer</a>
+                                </td>
+                            </tr>
+
+                            {% endfor %}
+
+                            {% endif %}
+
+                            </tbody>
+                        </table>
+                        <div class="navigation">
+                            {{ knp_pagination_render(acteurs) }}
+                        </div>
+                    </div>
+                    <div style="" class="text-right">
+                        <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- /#page-wrapper -->
+
+{% endblock %}

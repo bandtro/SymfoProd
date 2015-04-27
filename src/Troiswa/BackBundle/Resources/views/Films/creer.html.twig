@@ -1,0 +1,87 @@
+
+{% extends "TroiswaBackBundle::layout.html.twig" %}
+
+{% block titre %}
+    Genres {{ parent() }}
+
+{% endblock %}
+
+
+{% block css_s %}
+    {{ parent() }}
+
+{% endblock %}
+
+
+
+{% block central %}
+
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <h1 class="page-header">
+                        Saisie de l'acteur
+                    </h1>
+
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-dashboard"></i>  <a href="{{ path('troiswa_back_index') }}">Retour à l'accueil</a>
+                        </li>
+
+                        <li class="active">
+                            <a href="{{ path("troiswa_back_films") }}"><i class="fa fa-table"></i>  Films /</a>
+                            <i class="fa fa-table"></i>  CreerFilm
+                        </li>
+
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+
+
+
+            {{ form_start(formGenre, {"attr":{"novalidate":"novalidate"}} ) }}
+
+            {{ form_errors(formGenre.titre) }}
+            <h4>{{ form_label(formGenre.titre, "Titre: ", {"label_attr":{"class":"label label-primary"}}) }}</h4>
+            {{ form_widget(formGenre.titre, {"attr":{"class":"form-control", "placeholder":"Titre..."}}) }}
+
+            {{ form_errors(formGenre.genre) }}
+            <h4>{{ form_label(formGenre.genre, "Genre: ", {"label_attr":{"class":"label label-primary"}}) }}</h4>
+            {{ form_widget(formGenre.genre, {"attr":{"class":"form-control", "placeholder":"Genre..."}}) }}
+
+            {{ form_errors(formGenre.description) }}
+            <h4>{{ form_label(formGenre.description, "Description: ", {"label_attr":{"class":"label label-primary"}}) }}</h4>
+            {{ form_widget(formGenre.description, {"attr":{"class":"form-control", "placeholder":"Description..."}}) }}
+
+            {{ form_errors(formGenre.dateDeRealisation) }}
+            <h4>{{ form_label(formGenre.dateDeRealisation, "Date De Realisation : ", {"label_attr":{"class":"label label-primary"}}) }}</h4>
+            {{ form_widget(formGenre.dateDeRealisation, {"attr":{"class":"form-control"}}) }}
+
+            {{ form_errors(formGenre.note) }}
+            <h4>{{ form_label(formGenre.note, "Notes: ", {"label_attr":{"class":"label label-primary"}}) }}</h4>
+            {{ form_widget(formGenre.note, {"attr":{"class":"form-control", "placeholder":"Notes..."}}) }}
+
+            {{ form_errors(formGenre.fichier) }}
+            <h4>{{ form_label(formGenre.fichier, "Image: ", {"label_attr":{"class":"label label-primary"}}) }}</h4>
+            {{ form_widget(formGenre.fichier, {"attr":{"class":"form-control", "placeholder":"Image..."}}) }}
+
+            {{ form_widget(formGenre.ajouter, {"attr":{"class":"btn btn-success"}}) }}
+
+            {{ form_end(formGenre) }}
+
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- /#page-wrapper -->
+
+{% endblock %}
+
+

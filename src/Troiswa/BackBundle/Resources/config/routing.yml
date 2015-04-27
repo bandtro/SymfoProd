@@ -1,0 +1,85 @@
+troiswa_back_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: TroiswaBackBundle:Default:index }
+
+
+
+troiswa_back_test:  #nom unique de la route
+    path:   /essai  #url de la page
+    defaults:   { _controller: TroiswaBackBundle:Default:try}
+    #TroiswaBackBundle=namespace
+    #Default=Controller
+    #try=methode du controller
+
+
+
+troiswa_back_index:  #nom unique de la route
+    path:   /admin  #url de la page
+    defaults:   { _controller: TroiswaBackBundle:Main:index}
+
+
+
+troiswa_back_acteurs:  #nom unique de la route
+    path:   /admin/acteurs  #url de la page
+    defaults:   { _controller: TroiswaBackBundle:Acteurs:index}
+
+troiswa_back_create_unacteur:               # nom unique de la route vers page acteurs
+    path:     /admin/unacteur/creer      # URL DE LA PAGE
+    defaults: { _controller:TroiswaBackBundle:Acteurs:creer}
+
+troiswa_back_unacteur:  #nom unique de la route
+    path:   /admin/unacteur/{id}  #url de la page
+    defaults:   { _controller: TroiswaBackBundle:Acteurs:voir}
+    requirements:
+              id: \d+
+
+troiswa_back_modifier_unacteur:               # nom unique de la route vers page acteurs
+    path:     /admin/unacteur/modifier/{id}     # URL DE LA PAGE
+    defaults: { _controller:TroiswaBackBundle:Acteurs:modifier}
+    requirements:
+                  id: \d+
+
+troiswa_back_supprimer_unacteur:               # nom unique de la route vers page acteurs
+    path:     /admin/unacteur/supprimer/{id}   # URL DE LA PAGE
+    defaults: { _controller:TroiswaBackBundle:Acteurs:supprimer}
+    requirements:
+                  id: \d+
+
+
+troiswa_back_films:            # nom unique de la route vers page information films
+    path:     /admin/films/     # URL DE LA PAGE films
+    defaults: { _controller:TroiswaBackBundle:Film:allFilms}
+
+troiswa_back_info_films:            # nom unique de la route vers page information acteurs
+    path:     /admin/films/{id}     # URL DE LA PAGE information avec un paramètre ID à passer qui identifie l'acteur
+    defaults: { _controller:TroiswaBackBundle:Film:information}
+    requirements:
+              id: \d+   #  \d chiffres seuls le + veut dire 1 chiffre ou plus sinon uniquement de 0 à 9 autorisés
+troiswa_back_create_unfilm:
+    path:     /admin/unfilm/creer      # URL DE LA PAGE
+    defaults: { _controller:TroiswaBackBundle:Film:creer}
+
+troiswa_back_modifier_unfilm:
+    path:     /admin/unfilm/modifier/{id}      # URL DE LA PAGE
+    defaults: { _controller:TroiswaBackBundle:Film:modifier}
+    requirements:
+                      id: \d+
+
+troiswa_back_supprimer_unfilm:
+    path:     /admin/unfilm/supprimer/{id}      # URL DE LA PAGE
+    defaults: { _controller:TroiswaBackBundle:Film:supprimer}
+    requirements:
+                  id: \d+
+
+
+troiswa_back_genres:       # nom unique de la route vers page genres
+    path:     /admin/genre  # URL DE LA PAGE
+    defaults: { _controller:TroiswaBackBundle:Genre:index}
+
+troiswa_back_create_genre:               # nom unique de la route vers page acteurs
+    path:     /admin/genre/creation      # URL DE LA PAGE
+    defaults: { _controller:TroiswaBackBundle:Genre:creer}
+
+troiswa_back_modifier_genre:
+    path:   /admin/genre/modifier/{id}  #url de la page
+    defaults:   { _controller: TroiswaBackBundle:Genre:modifier}
